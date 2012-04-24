@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Jean Desulme">
+	<meta name="viewport" content="width=device-width">
+	<title>Personalized Restaurant Recommendations</title>
+
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="css/foundation.css">
+	<link rel="stylesheet" href="css/app.css">
+
+	<style type="text/css">
+		h2 {color: #0192DD;}
+		h4 {color: #FF3900;}
+		h5 {color: #FFB640;}
+		
+		#map_canvas {width: 100%; height: 500px; }
+		.store_img {width: 100px; float: left; padding-right: 7px;}
+	</style>
+	
+	<script src="js/libs/modernizr.foundation.js"></script>
+</head>
+<body>
+
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			<div class="twelve columns">
+				<h2><img src="img/r_logo_small.png" alt="logo" width="65" height="50" />	Restaurant Recommendations</h2>
+				<p>Jeanyhwh Desulme</p>
+				<p>Tools: <em>Twitter, Hunch Api, Google Maps Api, Foundation CSS Framework</em></p>
+				<hr />
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="twelve columns">
+				<div id="user_info" class="panel">
+					<form class="nice custom">
+						<label for="user">Twitter Name: </label>
+						<input type="text" name="user" id="user" class="input-text" placeholder="@jsleepy89" />
+
+						<label for="food">Restaurant Type: </label>
+						<select name="food" id="food">
+							<option value="italian">Italian</option>
+							<option value="mexican">Mexican</option>
+							<option value="thai">Thai</option>
+							<option value="chinese">Chinese</option>
+							<option value="japanese">Japanese</option>
+							<option value="indian">Indian</option>
+							<option value="asian">Asian</option>
+						</select>
+						<p><a id="submit" class="small blue button">Go</a></p>
+					</form>
+				</div>
+				<hr />
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="eight columns">
+				<!-- Google Map -->
+				<div class="row">
+					<div class="twelve columns">
+						<h4>Locations</h4>
+						<div id="map_canvas"></div>
+						<hr />
+					</div>
+				</div>
+				
+				<!-- Map Legend -->
+				<div class="row">
+					<div class="six columns">
+						<div class="panel">
+							<h4>Map Legend</h4>
+							<ul class="disc">
+								<li><img src="img/red_restaurant.png" alt="Red Icon" width="32" height="37" />  Restaurants that are similar to your taste based on your twitter account.</li>
+								<li><img src="img/blue_restaurant.png" alt="Red Icon" width="32" height="37"/>  Restaurants that are not personalized but are close to your current location.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="four columns">
+				<h4>Restaurants</h4>
+				<div id="restaurants"></div>			
+			</div>
+		</div>
+
+		<!-- Footer Info -->
+		<div class="row">
+			<div class="twelve columns">
+				<p>Jeanyhwh Desulme</p>
+				<p>Client Side Scripting (4002-736)</p>
+				<p>Tools: <em>Twitter, Hunch Api, Google Maps Api, Foundation CSS Framework</em></p>	
+			</div>
+		</div>
+	</div>
+	<!-- container -->
+
+	<!-- Included JS Files -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/project3.js"></script>
+
+	<script id="restTmpl" type="text/x-jquery-tmpl"> 
+		<div class="restaurant">
+			<h5>${name}</h5> 
+			<p>${street}</p>
+			<p>${city},${state} ${zip}</p>
+			<p><a href="${url}">${url}</a></p>
+			<p>${phone}</p>
+			<p>${description}</p>
+			<p><a href="#" id="${count}" onclick="restDisplay(this)">View on Map</a></p>
+		</div>
+		<hr />
+	</script>
+</body>
+</html>
